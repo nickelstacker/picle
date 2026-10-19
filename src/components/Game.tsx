@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { MAX_GUESSES, ZOOM_LEVELS } from '../config'
 import { isCorrectGuess, normalise } from '../lib/match'
 import { loadGame, saveGame, type SavedGame } from '../lib/storage'
-import type { Puzzle } from '../lib/puzzles'
+import { imageUrl, type Puzzle } from '../lib/puzzles'
 import { EndPanel } from './EndPanel'
 import { GuessInput } from './GuessInput'
 import { Progress } from './Progress'
@@ -55,7 +55,7 @@ export function Game({ dateKey, number, puzzle, msUntilNext }: Props) {
   return (
     <main className="game">
       <ZoomImage
-        src={puzzle.image}
+        src={imageUrl(puzzle)}
         scale={scale}
         // The answer only enters the page once the game is over.
         alt={over ? `Photo of ${puzzle.answer}` : 'Mystery photo, zoomed in'}

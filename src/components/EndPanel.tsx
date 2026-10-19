@@ -38,7 +38,7 @@ export function EndPanel({ puzzle, number, guessCount, won, msUntilNext }: Props
   }
 
   async function share() {
-    const text = buildShareText(number, guessCount, won, window.location.origin)
+    const text = buildShareText(number, guessCount, won, window.location.origin + import.meta.env.BASE_URL)
     const isTouch = window.matchMedia('(pointer: coarse)').matches
     if (isTouch && navigator.share) {
       try {

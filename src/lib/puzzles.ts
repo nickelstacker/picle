@@ -10,6 +10,11 @@ export interface Puzzle {
   creditUrl: string
 }
 
+/** Puzzle image paths are written from the site root; this adds the base path the site is served under. */
+export function imageUrl(puzzle: Puzzle): string {
+  return import.meta.env.BASE_URL + puzzle.image.replace(/^\//, '')
+}
+
 export type DailyPuzzle =
   | { kind: 'puzzle'; number: number; puzzle: Puzzle }
   | { kind: 'notLaunched' }

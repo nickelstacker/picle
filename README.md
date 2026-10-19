@@ -69,6 +69,14 @@ Game name, launch date, number of guesses and zoom levels are all in `src/config
 5. **Make sure the answer is in `src/data/answers.json`**, the autocomplete list. Keep that list broad, with lots of non-answers, so the suggestions don't give anything away.
 6. Run `npm test`. The data tests check ids, that each image exists, filename format, credits, and that every answer is in the autocomplete list.
 
+## Deploy to GitHub Pages (current)
+
+The site is live at https://nickelstacker.github.io/picle/.
+
+`.github/workflows/deploy.yml` runs the tests, builds with `BASE_PATH=/picle/`, and publishes to GitHub Pages on every push to `main`. You can also run it by hand from the repo's **Actions** tab. Pages is set to deploy from **GitHub Actions** under **Settings → Pages**.
+
+On the free GitHub plan, Pages needs a public repo. That means upcoming answers in `puzzles.json` are visible to anyone browsing the repo.
+
 ## Deploy to Cloudflare Pages
 
 **From Git (recommended):**
