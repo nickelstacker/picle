@@ -2,9 +2,7 @@ import { useEffect, useState } from 'react'
 import { GAME_NAME, LAUNCH_DATE } from './config'
 import { isValidDateKey, localDateKey, msUntilLocalMidnight } from './lib/date'
 import { selectDailyPuzzle, type Puzzle } from './lib/puzzles'
-import { hasSeenHelp, markHelpSeen } from './lib/storage'
 import { Game } from './components/Game'
-import { HelpModal } from './components/HelpModal'
 import puzzles from './data/puzzles.json'
 
 // In development, ?date=YYYY-MM-DD plays a different day's puzzle.
@@ -25,23 +23,14 @@ function useNow(intervalMs: number): Date {
 
 export default function App() {
   const now = useNow(15_000)
-  const [helpOpen, setHelpOpen] = useState(() => !hasSeenHelp())
   const dateKey = devDateOverride() ?? localDateKey(now)
   const daily = selectDailyPuzzle(puzzles as Puzzle[], dateKey, LAUNCH_DATE)
   const msUntilNext = msUntilLocalMidnight(now)
-
-  function closeHelp() {
-    setHelpOpen(false)
-    markHelpSeen()
-  }
 
   return (
     <div className="app">
       <header className="header">
         <h1>{GAME_NAME}</h1>
-        <button type="button" className="help-button" aria-label="How to play" onClick={() => setHelpOpen(true)}>
-          ?
-        </button>
       </header>
 
       {daily.kind === 'puzzle' ? (
@@ -53,8 +42,6 @@ export default function App() {
           <p>Thanks for playing. Check back later!</p>
         </main>
       )}
-
-      <HelpModal open={helpOpen} onClose={closeHelp} />
     </div>
   )
 }

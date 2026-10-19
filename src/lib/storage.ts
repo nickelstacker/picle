@@ -6,7 +6,6 @@ export interface SavedGame {
 }
 
 const GAME_PREFIX = 'picle:game:'
-const SEEN_HELP_KEY = 'picle:seenHelp'
 
 // Storage can be unavailable (private mode, blocked site data), so every access is guarded.
 function read(key: string): string | null {
@@ -39,12 +38,4 @@ export function loadGame(dateKey: string): SavedGame | null {
 
 export function saveGame(dateKey: string, game: SavedGame): void {
   write(GAME_PREFIX + dateKey, JSON.stringify(game))
-}
-
-export function hasSeenHelp(): boolean {
-  return read(SEEN_HELP_KEY) === '1'
-}
-
-export function markHelpSeen(): void {
-  write(SEEN_HELP_KEY, '1')
 }

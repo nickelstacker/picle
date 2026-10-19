@@ -66,8 +66,7 @@ Game name, launch date, number of guesses and zoom levels are all in `src/config
    - `id` must equal its position in the list (1-based).
    - `accepted` lists the variants that count as correct. Matching ignores case, punctuation, accents and a leading "the/a/an", and allows small typos (none for 4 letters or fewer, 1 up to 8 letters, 2 beyond that).
    - `credit` should name the author, licence and source. `creditUrl` is the Commons file page.
-5. **Make sure the answer is in `src/data/answers.json`**, the autocomplete list. Keep that list broad, with lots of non-answers, so the suggestions don't give anything away.
-6. Run `npm test`. The data tests check ids, that each image exists, filename format, credits, and that every answer is in the autocomplete list.
+5. Run `npm test`. The data tests check ids, that each image exists, filename format and credits.
 
 ## Deploy to GitHub Pages (current)
 
@@ -108,9 +107,9 @@ Picle has light protections, not real ones. The answer never appears in the page
 ```
 src/
   config.ts            name, launch date, guesses, zoom levels
-  App.tsx              header, daily puzzle selection, help modal
-  components/          Game, ZoomImage, GuessInput, Progress, EndPanel, HelpModal
-  lib/                 date, match, share, storage, suggest, puzzles (+ tests)
-  data/                puzzles.json, answers.json (+ data tests)
+  App.tsx              header, daily puzzle selection
+  components/          Game, ZoomImage, GuessInput, Progress, EndPanel
+  lib/                 date, match, share, storage, puzzles (+ tests)
+  data/                puzzles.json (+ data tests)
 public/puzzles/        puzzle images (001.jpg, 002.jpg, …)
 ```

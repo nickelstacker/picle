@@ -65,7 +65,7 @@ export function Game({ dateKey, number, puzzle, msUntilNext }: Props) {
 
       <Progress used={guesses.length} won={won} />
 
-      {!over && <GuessInput previousGuesses={guesses} onGuess={handleGuess} />}
+      {!over && <GuessInput onGuess={handleGuess} />}
 
       <p className="message" role="status" aria-live="polite">
         {message}
