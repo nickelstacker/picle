@@ -1,0 +1,367 @@
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --text: #1f2a2e;
+  --muted: #5c6b70;
+  --border: #e3e1db;
+  --accent: #0b7a72;
+  --accent-strong: #08615b;
+  --accent-soft: #e2f2ef;
+  --radius: 14px;
+
+  color-scheme: light;
+  font-family: ui-rounded, 'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Quicksand, Nunito, 'Segoe UI', system-ui,
+    sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+}
+
+.help-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Image */
+
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--border);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.08);
+}
+
+.frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.shake {
+  animation: shake 360ms ease-in-out;
+}
+
+@keyframes shake {
+  20% { translate: -6px 0; }
+  40% { translate: 5px 0; }
+  60% { translate: -3px 0; }
+  80% { translate: 2px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame img { transition-duration: 0ms !important; }
+  .shake { animation: none; }
+}
+
+/* Progress dots */
+
+.progress {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--muted);
+}
+
+.dot-used {
+  background: var(--muted);
+}
+
+.dot-win {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Guess input */
+
+.guess-input {
+  position: relative;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.input-row input {
+  flex: 1;
+  min-width: 0;
+  height: 52px;
+  padding: 0 16px;
+  font: inherit;
+  font-size: 1.1rem; /* 16px+ stops iOS zooming the page on focus */
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  outline: none;
+}
+
+.input-row input:focus {
+  border-color: var(--accent);
+}
+
+.guess-button,
+.primary,
+.share-button {
+  height: 52px;
+  padding: 0 20px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.guess-button:hover:not(:disabled),
+.primary:hover,
+.share-button:hover {
+  background: var(--accent-strong);
+}
+
+.guess-button:disabled {
+  background: var(--border);
+  color: var(--muted);
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.suggestions {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 6px);
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 -4px 20px rgb(0 0 0 / 0.1);
+}
+
+.suggestions li {
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.suggestions li:hover,
+.suggestions li.active {
+  background: var(--accent-soft);
+}
+
+/* Messages and guesses */
+
+.message {
+  min-height: 1.4em;
+  margin: 10px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+.guess-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.guess-list li {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-decoration: line-through;
+  text-decoration-color: rgb(92 107 112 / 0.5);
+}
+
+/* End of game */
+
+.end-panel {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.end-panel h2 {
+  margin: 8px 0 4px;
+  font-size: 1.5rem;
+}
+
+.answer {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.fun-fact {
+  margin: 12px 0;
+  line-height: 1.5;
+}
+
+.credit {
+  margin: 0 0 20px;
+  font-size: 0.8rem;
+}
+
+.credit a {
+  color: var(--muted);
+}
+
+.share-button {
+  width: 100%;
+  height: 56px;
+  font-size: 1.2rem;
+}
+
+.next {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  top: 16px;
+  z-index: 20;
+  translate: -50% 0;
+  pointer-events: none;
+}
+
+.toast span {
+  display: block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--text);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Empty state */
+
+.empty {
+  padding: 64px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+.empty-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Help modal */
+
+.help {
+  width: min(360px, calc(100vw - 32px));
+  padding: 24px;
+  border: none;
+  border-radius: var(--radius);
+  color: var(--text);
+  background: var(--surface);
+  box-shadow: 0 10px 40px rgb(0 0 0 / 0.2);
+}
+
+.help::backdrop {
+  background: rgb(31 42 46 / 0.4);
+}
+
+.help h2 {
+  margin: 0 0 12px;
+}
+
+.help ul {
+  margin: 0 0 20px;
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+.help .primary {
+  width: 100%;
+}

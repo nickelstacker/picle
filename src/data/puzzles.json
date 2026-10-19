@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "answer": "Statue of Liberty",
+    "accepted": [
+      "statue of liberty",
+      "lady liberty",
+      "liberty statue",
+      "liberty"
+    ],
+    "image": "/puzzles/001.jpg",
+    "funFact": "The statue was originally shiny reddish-brown copper; it turned green over a few decades as the copper weathered into a patina.",
+    "credit": "Photo by Daniel Schwen, Public domain, via Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Liberty_frontal_2_crop.JPG"
+  },
+  {
+    "id": 2,
+    "answer": "Giraffe",
+    "accepted": [
+      "giraffe",
+      "giraffes"
+    ],
+    "image": "/puzzles/002.jpg",
+    "funFact": "Despite their enormous necks, giraffes have the same number of neck vertebrae as humans: seven.",
+    "credit": "Photo by Brocken Inaglory, CC BY-SA 3.0, via Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Two_male_giraffes_are_necking_in_San_Francisco_Zoo.jpg"
+  },
+  {
+    "id": 3,
+    "answer": "Pineapple",
+    "accepted": [
+      "pineapple",
+      "ananas",
+      "pineapples"
+    ],
+    "image": "/puzzles/003.jpg",
+    "funFact": "A pineapple isn't a single fruit: it forms from many individual flowers whose berries fuse together around a central core.",
+    "credit": "Photo by Markus Leupold-Löwenthal, CC BY-SA 3.0, via Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:AnanasComosusOnPlant.jpg"
+  },
+  {
+    "id": 4,
+    "answer": "Pocket watch",
+    "accepted": [
+      "pocket watch",
+      "pocketwatch",
+      "watch",
+      "fob watch"
+    ],
+    "image": "/puzzles/004.jpg",
+    "funFact": "Pocket watches were the norm for men until World War I, when soldiers popularised the more practical wristwatch.",
+    "credit": "Photo by Franz van Duns, CC BY-SA 4.0, via Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Longines_4_Grand_Prix_pocket_watch_-_clockwork_visible_-_enhanced_resolution_DSF3402-PSMS.jpg"
+  },
+  {
+    "id": 5,
+    "answer": "Eiffel Tower",
+    "accepted": [
+      "eiffel tower",
+      "tour eiffel",
+      "eiffel"
+    ],
+    "image": "/puzzles/005.jpg",
+    "funFact": "The Eiffel Tower can grow about 15 cm taller on hot summer days as its iron expands in the heat.",
+    "credit": "Photo by Benh LIEU SONG, Public domain, via Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons.jpg"
+  },
+  {
+    "id": 6,
+    "answer": "Chameleon",
+    "accepted": [
+      "chameleon",
+      "panther chameleon",
+      "chameleons"
+    ],
+    "image": "/puzzles/006.jpg",
+    "funFact": "A chameleon's eyes can move independently, letting it look in two different directions at once.",
+    "credit": "Photo by Charles J. Sharp, CC BY-SA 4.0, via Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Panther_chameleon_(Furcifer_pardalis)_male_Nosy_Be.jpg"
+  },
+  {
+    "id": 7,
+    "answer": "Sunflower",
+    "accepted": [
+      "sunflower",
+      "sunflowers",
+      "helianthus"
+    ],
+    "image": "/puzzles/007.jpg",
+    "funFact": "The florets in a sunflower's centre grow in interlocking spirals whose counts are often Fibonacci numbers like 34 and 55.",
+    "credit": "Photo by böhringer friedrich, CC BY-SA 2.5, via Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Sonnenblume_Helianthus_2.JPG"
+  },
+  {
+    "id": 8,
+    "answer": "Taj Mahal",
+    "accepted": [
+      "taj mahal",
+      "taj"
+    ],
+    "image": "/puzzles/008.jpg",
+    "funFact": "The Taj Mahal was built by Mughal emperor Shah Jahan as a mausoleum for his beloved wife Mumtaz Mahal.",
+    "credit": "Photo by Yann (edited by King of Hearts), CC BY-SA 4.0, via Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Taj_Mahal,_Agra,_India_edit2.jpg"
+  },
+  {
+    "id": 9,
+    "answer": "Strawberry",
+    "accepted": [
+      "strawberry",
+      "strawberries"
+    ],
+    "image": "/puzzles/009.jpg",
+    "funFact": "The 'seeds' on a strawberry's outside are actually tiny fruits called achenes, each holding a seed.",
+    "credit": "Photo by Ivar Leidus, CC BY-SA 4.0, via Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Garden_strawberry_(Fragaria_%C3%97_ananassa)_single2.jpg"
+  },
+  {
+    "id": 10,
+    "answer": "Zebra",
+    "accepted": [
+      "zebra",
+      "zebras"
+    ],
+    "image": "/puzzles/010.jpg",
+    "funFact": "Every zebra's stripe pattern is unique, a bit like a fingerprint.",
+    "credit": "Photo by Alandmanson, CC BY-SA 4.0, via Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Zebra_2013_10_06_1274.jpg"
+  }
+]
