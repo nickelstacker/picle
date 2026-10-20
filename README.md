@@ -118,7 +118,7 @@ Picle has light protections, not real ones. The answer never appears in the page
 src/
   config.ts            name, launch date, guesses, zoom levels
   App.tsx              header, daily puzzle selection
-  components/          Game, ZoomImage, GuessInput, Progress, EndPanel
+  components/          Game, ZoomImage, Keyboard, Progress, EndPanel
   lib/                 date, match, share, storage, puzzles (+ tests)
   data/                puzzles.json (+ data tests)
 public/puzzles/        puzzle images (001.jpg, 002.jpg, …)
