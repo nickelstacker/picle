@@ -32,8 +32,8 @@ Game name, launch date, number of guesses and zoom levels are all in `src/config
 ## Adding a puzzle
 
 1. **Find a photo** on [Wikimedia Commons](https://commons.wikimedia.org/). Good candidates:
-   - The subject fills the frame and is roughly centred. The game zooms into the exact centre.
-   - The centre is interesting when zoomed 16x, but not instantly identifiable.
+   - The subject fills the frame and is roughly centred.
+   - Some part of it is interesting when zoomed 16x, but not instantly identifiable. You set that point with `focus` below.
    - At least 2048 px on the short side, so the 16x zoom stays sharp.
 2. **Check the licence** on the file page, under "Licensing". Only use:
    - Public domain or CC0
@@ -59,13 +59,15 @@ Game name, launch date, number of guesses and zoom levels are all in `src/config
      "image": "/puzzles/011.jpg",
      "funFact": "Young sunflowers turn to follow the sun across the sky.",
      "credit": "Photo by Jane Doe, CC BY-SA 4.0, via Wikimedia Commons",
-     "creditUrl": "https://commons.wikimedia.org/wiki/File:Example.jpg"
+     "creditUrl": "https://commons.wikimedia.org/wiki/File:Example.jpg",
+     "focus": { "x": 0.86, "y": 0.74 }
    }
    ```
 
    - `id` must equal its position in the list (1-based).
    - `accepted` lists the variants that count as correct. Matching ignores case, punctuation, accents and a leading "the/a/an", and allows small typos (none for 4 letters or fewer, 1 up to 8 letters, 2 beyond that).
    - `credit` should name the author, licence and source. `creditUrl` is the Commons file page.
+   - `focus` (optional) is the point the zoom starts on and stays anchored to, as fractions of the image's width and height: `{ "x": 0, "y": 0 }` is the top-left corner and `{ "x": 0.5, "y": 0.5 }` (the default) is the centre. Pick a part that is hard to identify at 16x but close enough to the subject that zooming out reveals it, such as a hoof rather than the giraffe's patterned body. Check it with `npm run dev` and `?date=` for that puzzle's day.
 5. Run `npm test`. The data tests check ids, that each image exists, filename format and credits.
 
 ## Deploy to GitHub Pages (current)

@@ -8,6 +8,8 @@ export interface Puzzle {
   funFact: string
   credit: string
   creditUrl: string
+  /** Point the zoom is anchored on, as fractions of width and height (0..1). Defaults to the centre. */
+  focus?: { x: number; y: number }
 }
 
 /** Puzzle image paths are written from the site root; this adds the base path the site is served under. */

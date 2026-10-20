@@ -57,6 +57,7 @@ export function Game({ dateKey, number, puzzle, msUntilNext }: Props) {
       <ZoomImage
         src={imageUrl(puzzle)}
         scale={scale}
+        focus={puzzle.focus ?? { x: 0.5, y: 0.5 }}
         // The answer only enters the page once the game is over.
         alt={over ? `Photo of ${puzzle.answer}` : 'Mystery photo, zoomed in'}
         shake={shake}

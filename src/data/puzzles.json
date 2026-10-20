@@ -11,7 +11,11 @@
     "image": "/puzzles/001.jpg",
     "funFact": "The statue was originally shiny reddish-brown copper; it turned green over a few decades as the copper weathered into a patina.",
     "credit": "Photo by Daniel Schwen, Public domain, via Wikimedia Commons",
-    "creditUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Liberty_frontal_2_crop.JPG"
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Liberty_frontal_2_crop.JPG",
+    "focus": {
+      "x": 0.785,
+      "y": 0.655
+    }
   },
   {
     "id": 2,
@@ -23,7 +27,11 @@
     "image": "/puzzles/002.jpg",
     "funFact": "Despite their enormous necks, giraffes have the same number of neck vertebrae as humans: seven.",
     "credit": "Photo by Brocken Inaglory, CC BY-SA 3.0, via Wikimedia Commons",
-    "creditUrl": "https://commons.wikimedia.org/wiki/File:Two_male_giraffes_are_necking_in_San_Francisco_Zoo.jpg"
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Two_male_giraffes_are_necking_in_San_Francisco_Zoo.jpg",
+    "focus": {
+      "x": 0.655,
+      "y": 0.868
+    }
   },
   {
     "id": 3,
@@ -36,7 +44,11 @@
     "image": "/puzzles/003.jpg",
     "funFact": "A pineapple isn't a single fruit: it forms from many individual flowers whose berries fuse together around a central core.",
     "credit": "Photo by Markus Leupold-Löwenthal, CC BY-SA 3.0, via Wikimedia Commons",
-    "creditUrl": "https://commons.wikimedia.org/wiki/File:AnanasComosusOnPlant.jpg"
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:AnanasComosusOnPlant.jpg",
+    "focus": {
+      "x": 0.53,
+      "y": 0.22
+    }
   },
   {
     "id": 4,
@@ -50,7 +62,11 @@
     "image": "/puzzles/004.jpg",
     "funFact": "Pocket watches were the norm for men until World War I, when soldiers popularised the more practical wristwatch.",
     "credit": "Photo by Franz van Duns, CC BY-SA 4.0, via Wikimedia Commons",
-    "creditUrl": "https://commons.wikimedia.org/wiki/File:Longines_4_Grand_Prix_pocket_watch_-_clockwork_visible_-_enhanced_resolution_DSF3402-PSMS.jpg"
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Longines_4_Grand_Prix_pocket_watch_-_clockwork_visible_-_enhanced_resolution_DSF3402-PSMS.jpg",
+    "focus": {
+      "x": 0.505,
+      "y": 0.075
+    }
   },
   {
     "id": 5,
@@ -63,7 +79,11 @@
     "image": "/puzzles/005.jpg",
     "funFact": "The Eiffel Tower can grow about 15 cm taller on hot summer days as its iron expands in the heat.",
     "credit": "Photo by Benh LIEU SONG, Public domain, via Wikimedia Commons",
-    "creditUrl": "https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons.jpg"
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons.jpg",
+    "focus": {
+      "x": 0.49,
+      "y": 0.175
+    }
   },
   {
     "id": 6,
@@ -76,7 +96,11 @@
     "image": "/puzzles/006.jpg",
     "funFact": "A chameleon's eyes can move independently, letting it look in two different directions at once.",
     "credit": "Photo by Charles J. Sharp, CC BY-SA 4.0, via Wikimedia Commons",
-    "creditUrl": "https://commons.wikimedia.org/wiki/File:Panther_chameleon_(Furcifer_pardalis)_male_Nosy_Be.jpg"
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Panther_chameleon_(Furcifer_pardalis)_male_Nosy_Be.jpg",
+    "focus": {
+      "x": 0.8,
+      "y": 0.62
+    }
   },
   {
     "id": 7,
@@ -89,7 +113,11 @@
     "image": "/puzzles/007.jpg",
     "funFact": "The florets in a sunflower's centre grow in interlocking spirals whose counts are often Fibonacci numbers like 34 and 55.",
     "credit": "Photo by böhringer friedrich, CC BY-SA 2.5, via Wikimedia Commons",
-    "creditUrl": "https://commons.wikimedia.org/wiki/File:Sonnenblume_Helianthus_2.JPG"
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Sonnenblume_Helianthus_2.JPG",
+    "focus": {
+      "x": 0.86,
+      "y": 0.74
+    }
   },
   {
     "id": 8,
@@ -101,7 +129,11 @@
     "image": "/puzzles/008.jpg",
     "funFact": "The Taj Mahal was built by Mughal emperor Shah Jahan as a mausoleum for his beloved wife Mumtaz Mahal.",
     "credit": "Photo by Yann (edited by King of Hearts), CC BY-SA 4.0, via Wikimedia Commons",
-    "creditUrl": "https://commons.wikimedia.org/wiki/File:Taj_Mahal,_Agra,_India_edit2.jpg"
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Taj_Mahal,_Agra,_India_edit2.jpg",
+    "focus": {
+      "x": 0.27,
+      "y": 0.85
+    }
   },
   {
     "id": 9,
@@ -113,7 +145,11 @@
     "image": "/puzzles/009.jpg",
     "funFact": "The 'seeds' on a strawberry's outside are actually tiny fruits called achenes, each holding a seed.",
     "credit": "Photo by Ivar Leidus, CC BY-SA 4.0, via Wikimedia Commons",
-    "creditUrl": "https://commons.wikimedia.org/wiki/File:Garden_strawberry_(Fragaria_%C3%97_ananassa)_single2.jpg"
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Garden_strawberry_(Fragaria_%C3%97_ananassa)_single2.jpg",
+    "focus": {
+      "x": 0.13,
+      "y": 0.3
+    }
   },
   {
     "id": 10,
@@ -125,6 +161,10 @@
     "image": "/puzzles/010.jpg",
     "funFact": "Every zebra's stripe pattern is unique, a bit like a fingerprint.",
     "credit": "Photo by Alandmanson, CC BY-SA 4.0, via Wikimedia Commons",
-    "creditUrl": "https://commons.wikimedia.org/wiki/File:Zebra_2013_10_06_1274.jpg"
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Zebra_2013_10_06_1274.jpg",
+    "focus": {
+      "x": 0.19,
+      "y": 0.27
+    }
   }
 ]

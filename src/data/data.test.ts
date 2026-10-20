@@ -22,5 +22,11 @@ describe('puzzles.json', () => {
     expect(existsSync(join(process.cwd(), 'public', p.image))).toBe(true)
     // Filenames must not give the answer away
     expect(p.image).toMatch(/^\/puzzles\/\d{3}\.jpg$/)
+    if (p.focus) {
+      for (const v of [p.focus.x, p.focus.y]) {
+        expect(v).toBeGreaterThanOrEqual(0)
+        expect(v).toBeLessThanOrEqual(1)
+      }
+    }
   })
 })
