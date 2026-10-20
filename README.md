@@ -33,19 +33,19 @@ Game name, launch date, number of guesses and zoom levels are all in `src/config
 
 1. **Find a photo** on [Wikimedia Commons](https://commons.wikimedia.org/). Good candidates:
    - The subject fills the frame and is roughly centred. The game zooms into the exact centre.
-   - The centre is interesting when zoomed 8x, but not instantly identifiable.
-   - At least 1024 px on the short side.
+   - The centre is interesting when zoomed 16x, but not instantly identifiable.
+   - At least 2048 px on the short side, so the 16x zoom stays sharp.
 2. **Check the licence** on the file page, under "Licensing". Only use:
    - Public domain or CC0
    - CC BY (any version)
    - CC BY-SA (any version)
 
    Don't use anything marked NC (non-commercial), ND (no derivatives), "fair use", or with no clear licence. Cropping counts as a derivative, so ND is out. Note the author exactly as the file page asks to be credited.
-3. **Prepare the image.** Crop it to a centred square, resize it to 1024×1024 and save it as JPEG. On macOS:
+3. **Prepare the image.** Crop it to a centred square, resize it to 2048×2048 and save it as JPEG. On macOS:
 
    ```sh
-   sips -c 1024 1024 photo.jpg   # crop to a centred square first if needed: sips -c <short side> <short side>
-   sips -Z 1024 photo.jpg
+   sips -c <short side> <short side> photo.jpg   # crop to a centred square
+   sips -Z 2048 -s formatOptions 82 photo.jpg
    ```
 
    Save it as the next number in `public/puzzles/`, e.g. `011.jpg`. **Never put the answer in the filename.**
