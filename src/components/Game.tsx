@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { MAX_GUESSES, ZOOM_LEVELS } from '../config'
 import { isCorrectGuess, normalise } from '../lib/match'
+import type { DebugParams } from '../lib/debug'
 import { loadGame, saveGame, type SavedGame } from '../lib/storage'
 import { imageUrl, type Puzzle } from '../lib/puzzles'
 import { EndPanel } from './EndPanel'
@@ -13,11 +14,12 @@ interface Props {
   number: number
   puzzle: Puzzle
   msUntilNext: number
-  /** False for debug games, which neither load nor overwrite saved progress. */
-  persist: boolean
+  /** Set for debug games, which neither load nor overwrite saved progress. */
+  debug: DebugParams | null
 }
 
-export function Game({ dateKey, number, puzzle, msUntilNext, persist }: Props) {
+export function Game({ dateKey, number, puzzle, msUntilNext, debug }: Props) {
+  const persist = debug === null
   const [game, setGame] = useState<SavedGame>(
     () => (persist ? loadGame(dateKey) : null) ?? { guesses: [], status: 'playing' },
   )
@@ -32,7 +34,9 @@ export function Game({ dateKey, number, puzzle, msUntilNext, persist }: Props) {
   const over = status !== 'playing'
   const won = status === 'won'
   const wrongGuesses = won ? guesses.slice(0, -1) : guesses
-  const scale = over ? 1 : ZOOM_LEVELS[Math.min(guesses.length, ZOOM_LEVELS.length - 1)]
+  const scale = over ? 1 : (debug?.zoom ?? ZOOM_LEVELS[Math.min(guesses.length, ZOOM_LEVELS.length - 1)])
+  const defaultFocus = puzzle.focus ?? { x: 0.5, y: 0.5 }
+  const focus = { x: debug?.x ?? defaultFocus.x, y: debug?.y ?? defaultFocus.y }
 
   function handleGuess(guess: string) {
     if (over) return
@@ -63,12 +67,18 @@ export function Game({ dateKey, number, puzzle, msUntilNext, persist }: Props) {
       <ZoomImage
         src={imageUrl(puzzle)}
         scale={scale}
-        focus={puzzle.focus ?? { x: 0.5, y: 0.5 }}
+        focus={focus}
         // The answer only enters the page once the game is over.
         alt={over ? `Photo of ${puzzle.answer}` : 'Mystery photo, zoomed in'}
         shake={shake}
         onShakeEnd={() => setShake(false)}
       />
+
+      {debug && (
+        <p className="debug">
+          Debug · day {number} · x={focus.x} y={focus.y} · zoom={scale}
+        </p>
+      )}
 
       <Progress used={guesses.length} won={won} />
 
