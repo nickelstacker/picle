@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { MAX_GUESSES, ZOOM_LEVELS } from '../config'
 import { isCorrectGuess, normalise } from '../lib/match'
+import { trackEvent } from '../lib/analytics'
 import type { DebugParams } from '../lib/debug'
 import { loadGame, saveGame, type SavedGame } from '../lib/storage'
 import { imageUrl, type Puzzle } from '../lib/puzzles'
@@ -60,10 +61,14 @@ export function Game({ dateKey, number, puzzle, msUntilNext, debug }: Props) {
 
     const next = [...guesses, guess]
     setText('')
+    const title = `Puzzle #${number}`
+    if (persist && next.length === 1) trackEvent(`puzzle-${number}-started`, title)
     if (isCorrectGuess(guess, puzzle.accepted)) {
       setGame({ guesses: next, status: 'won' })
+      if (persist) trackEvent(`puzzle-${number}-won-in-${next.length}`, title)
     } else if (next.length >= MAX_GUESSES) {
       setGame({ guesses: next, status: 'lost' })
+      if (persist) trackEvent(`puzzle-${number}-lost`, title)
     } else {
       setGame({ guesses: next, status: 'playing' })
       setShake(true)

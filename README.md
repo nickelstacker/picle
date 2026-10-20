@@ -108,6 +108,18 @@ npx wrangler pages deploy dist --project-name picle
 
 To add a custom domain, open the Pages project and go to **Custom domains**. The share text uses whatever domain the site is served from.
 
+## Analytics
+
+Picle uses [GoatCounter](https://www.goatcounter.com) (no cookies, no personal data). The dashboard is at https://nickelstacker.goatcounter.com. Besides page views, the game sends these events, each titled with the puzzle number:
+
+| Event | Sent when |
+| --- | --- |
+| `puzzle-N-started` | The first guess of the day is made |
+| `puzzle-N-won-in-G` | The puzzle is solved in G guesses |
+| `puzzle-N-lost` | All 6 guesses are used without solving it |
+
+Nothing is sent in local development (`npm run dev`) or for debug games (any of `day`, `x`, `y`, `zoom` in the URL). Setup lives in `src/lib/analytics.ts`.
+
 ## Cheating
 
 Picle has light protections, not real ones. The answer never appears in the page before the game ends, alt text is generic until the reveal, and image filenames are just numbers. But `puzzles.json` is bundled into the JavaScript, so someone digging through the source can find answers. That's an accepted trade-off for a static site with no backend.
