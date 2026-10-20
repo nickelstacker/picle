@@ -12,6 +12,24 @@ declare global {
   }
 }
 
+const OPT_OUT_KEY = 'picle:analyticsOff'
+
+/**
+ * Applies ?analytics=off or ?analytics=on, which turn counting off or back on for this device
+ * (remembered in localStorage), and reports whether this device is opted out.
+ */
+export function applyAnalyticsOptOut(search: string): boolean {
+  const setting = new URLSearchParams(search).get('analytics')
+  try {
+    if (setting === 'off') localStorage.setItem(OPT_OUT_KEY, '1')
+    if (setting === 'on') localStorage.removeItem(OPT_OUT_KEY)
+    return localStorage.getItem(OPT_OUT_KEY) === '1'
+  } catch {
+    // Without storage the choice can't be remembered, but this visit still honours it.
+    return setting === 'off'
+  }
+}
+
 let enabled = false
 // Events sent before the script has loaded wait here.
 const pending: { path: string; title: string }[] = []

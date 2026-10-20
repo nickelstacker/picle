@@ -15,7 +15,7 @@ function useNow(intervalMs: number): Date {
   return now
 }
 
-export default function App() {
+export default function App({ analyticsOff }: { analyticsOff: boolean }) {
   const now = useNow(15_000)
   // For debugging: ?day=N plays puzzle #N, ?x= and ?y= move the focus point, ?zoom= fixes the zoom.
   const debug = parseDebugParams(window.location.search)
@@ -28,6 +28,8 @@ export default function App() {
       <header className="header">
         <h1>{GAME_NAME}</h1>
       </header>
+
+      {analyticsOff && <p className="analytics-off">Not counted on this device</p>}
 
       {daily.kind === 'puzzle' ? (
         // Keyed by date so a fresh game starts when the day rolls over at local midnight.

@@ -118,7 +118,9 @@ Picle uses [GoatCounter](https://www.goatcounter.com) (no cookies, no personal d
 | `puzzle-N-won-in-G` | The puzzle is solved in G guesses |
 | `puzzle-N-lost` | All 6 guesses are used without solving it |
 
-Nothing is sent in local development (`npm run dev`) or for debug games (any of `day`, `x`, `y`, `zoom` in the URL). Setup lives in `src/lib/analytics.ts`.
+Nothing is sent in local development (`npm run dev`) or for debug games (any of `day`, `x`, `y`, `zoom` in the URL).
+
+To stop counting your own plays on a device, visit `https://nickelstacker.github.io/picle/?analytics=off` once on it. The device remembers this, and the game shows "Not counted on this device" under the title. Visit `?analytics=on` to turn counting back on. Clearing the site's data in the browser also turns it back on. Setup lives in `src/lib/analytics.ts`.
 
 ## Cheating
 

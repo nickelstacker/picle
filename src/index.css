@@ -297,6 +297,13 @@ button {
   .shake { animation: none; }
 }
 
+.analytics-off {
+  margin: -4px 0 8px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
 .debug {
   margin: 8px 0 0;
   text-align: center;
