@@ -1,4 +1,6 @@
 :root {
+  /* No double-tap-to-zoom, which can eat fast taps; pinch zoom still works */
+  touch-action: manipulation;
   --bg: #fbfaf7;
   --surface: #ffffff;
   --text: #1f2a2e;

@@ -9,12 +9,12 @@ interface Props {
 const ROWS = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm']
 const REPEAT_DELAY_MS = 400
 const REPEAT_EVERY_MS = 70
-// A tap fires on touch-down; ignore the click the browser sends afterwards for the same tap.
-const CLICK_AFTER_POINTER_MS = 700
 
 export function Keyboard({ onKey }: Props) {
   const [pressed, setPressed] = useState<Key | null>(null)
-  const lastPointerAt = useRef(0)
+  const keyboardRef = useRef<HTMLDivElement>(null)
+  // A mouse press types on mousedown; the click that follows for the same key must not type it again.
+  const mouseClickPending = useRef<Key | null>(null)
   const repeat = useRef<{ delay?: number; every?: number }>({})
 
   function stopRepeat() {
@@ -23,6 +23,19 @@ export function Keyboard({ onKey }: Props) {
   }
 
   useEffect(() => stopRepeat, [])
+
+  // Claiming touches stops iOS reading fast taps as double-tap or zoom gestures, which can swallow the
+  // second tap, and stops it sending a click after each tap. React's touch listeners are passive, so
+  // this is a native listener.
+  useEffect(() => {
+    const el = keyboardRef.current
+    if (!el) return
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.cancelable) e.preventDefault()
+    }
+    el.addEventListener('touchstart', onTouchStart, { passive: false })
+    return () => el.removeEventListener('touchstart', onTouchStart)
+  }, [])
 
   function release() {
     setPressed(null)
@@ -37,7 +50,7 @@ export function Keyboard({ onKey }: Props) {
     onPointerDown: (e: PointerEvent) => {
       if (e.pointerType === 'mouse' && e.button !== 0) return
       e.preventDefault()
-      lastPointerAt.current = Date.now()
+      mouseClickPending.current = e.pointerType === 'mouse' ? key : null
       setPressed(key)
       onKey(key)
       if (key === 'backspace') {
@@ -52,7 +65,8 @@ export function Keyboard({ onKey }: Props) {
     onPointerLeave: release,
     // Screen readers and other assistive tech activate keys with a plain click.
     onClick: () => {
-      if (Date.now() - lastPointerAt.current > CLICK_AFTER_POINTER_MS) onKey(key)
+      if (mouseClickPending.current === key) mouseClickPending.current = null
+      else onKey(key)
     },
     'data-pressed': pressed === key || undefined,
   })
@@ -71,7 +85,7 @@ export function Keyboard({ onKey }: Props) {
   // Wordle's layout: half-key spacers indent the middle row, and Enter and Delete flank Z–M,
   // so every letter sits in the column it has on a phone keyboard.
   return (
-    <div className="keyboard" role="group" aria-label="Keyboard">
+    <div className="keyboard" role="group" aria-label="Keyboard" ref={keyboardRef}>
       <div className="key-row">{ROWS[0].split('').map(letterKey)}</div>
       <div className="key-row">
         <div className="key-spacer" />
