@@ -19,11 +19,10 @@ export function puzzleNumberFor(dateKey: string, launchKey: string): number {
   return dayIndex(dateKey) - dayIndex(launchKey) + 1
 }
 
-export function isValidDateKey(key: string): boolean {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(key)) return false
-  const [y, m, d] = key.split('-').map(Number)
-  const date = new Date(y, m - 1, d)
-  return date.getFullYear() === y && date.getMonth() === m - 1 && date.getDate() === d
+/** Local date (YYYY-MM-DD) on which a given puzzle number is played. */
+export function dateKeyForPuzzle(number: number, launchKey: string): string {
+  const [y, m, d] = launchKey.split('-').map(Number)
+  return localDateKey(new Date(y, m - 1, d + number - 1))
 }
 
 export function msUntilLocalMidnight(now: Date): number {

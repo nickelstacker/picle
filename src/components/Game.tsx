@@ -13,14 +13,20 @@ interface Props {
   number: number
   puzzle: Puzzle
   msUntilNext: number
+  /** False for debug games, which neither load nor overwrite saved progress. */
+  persist: boolean
 }
 
-export function Game({ dateKey, number, puzzle, msUntilNext }: Props) {
-  const [game, setGame] = useState<SavedGame>(() => loadGame(dateKey) ?? { guesses: [], status: 'playing' })
+export function Game({ dateKey, number, puzzle, msUntilNext, persist }: Props) {
+  const [game, setGame] = useState<SavedGame>(
+    () => (persist ? loadGame(dateKey) : null) ?? { guesses: [], status: 'playing' },
+  )
   const [shake, setShake] = useState(false)
   const [message, setMessage] = useState('')
 
-  useEffect(() => saveGame(dateKey, game), [dateKey, game])
+  useEffect(() => {
+    if (persist) saveGame(dateKey, game)
+  }, [dateKey, game, persist])
 
   const { guesses, status } = game
   const over = status !== 'playing'

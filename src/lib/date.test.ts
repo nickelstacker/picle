@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { formatCountdown, isValidDateKey, localDateKey, msUntilLocalMidnight, puzzleNumberFor } from './date'
+import { dateKeyForPuzzle, formatCountdown, localDateKey, msUntilLocalMidnight, puzzleNumberFor } from './date'
 import { selectDailyPuzzle, type Puzzle } from './puzzles'
 
 const LAUNCH = '2026-10-19'
@@ -35,6 +35,15 @@ describe('puzzleNumberFor', () => {
   })
 })
 
+describe('dateKeyForPuzzle', () => {
+  it('is the inverse of puzzleNumberFor', () => {
+    expect(dateKeyForPuzzle(1, LAUNCH)).toBe('2026-10-19')
+    expect(dateKeyForPuzzle(14, LAUNCH)).toBe('2026-11-01')
+    expect(dateKeyForPuzzle(366, LAUNCH)).toBe('2027-10-19')
+    for (const n of [1, 2, 13, 14, 15, 100, 147]) expect(puzzleNumberFor(dateKeyForPuzzle(n, LAUNCH), LAUNCH)).toBe(n)
+  })
+})
+
 describe('selectDailyPuzzle', () => {
   const puzzles = [fakePuzzle(1), fakePuzzle(2), fakePuzzle(3)]
 
@@ -49,15 +58,6 @@ describe('selectDailyPuzzle', () => {
 
   it('reports before launch day', () => {
     expect(selectDailyPuzzle(puzzles, '2026-10-18', LAUNCH)).toEqual({ kind: 'notLaunched' })
-  })
-})
-
-describe('isValidDateKey', () => {
-  it('accepts real dates only', () => {
-    expect(isValidDateKey('2026-10-19')).toBe(true)
-    expect(isValidDateKey('2026-02-30')).toBe(false)
-    expect(isValidDateKey('2026-1-5')).toBe(false)
-    expect(isValidDateKey('tomorrow')).toBe(false)
   })
 })
 

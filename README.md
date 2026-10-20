@@ -16,9 +16,9 @@ npm run build     # production build into dist/
 npm run preview   # serve the production build
 ```
 
-In dev mode you can play any day's puzzle with `?date=YYYY-MM-DD`, for example `http://localhost:5173/?date=2026-10-25`. This is ignored in production builds.
+To play a specific puzzle for debugging, add `?day=N`, for example `http://localhost:5173/?day=3` or `https://nickelstacker.github.io/picle/?day=3`. This works on the live site too. Debug games are never saved, so reloading starts that puzzle fresh, and your real progress for the day is left alone. A day past the end of the list shows the "coming soon" screen.
 
-Each day's progress is saved in `localStorage` under `picle:game:<date>`. To replay a day while testing, clear site data or delete that key in devtools.
+Each day's real progress is saved in `localStorage` under `picle:game:<date>`. To replay today's game itself, clear site data or delete that key in devtools.
 
 ## How the daily puzzle is chosen
 
@@ -67,7 +67,7 @@ Game name, launch date, number of guesses and zoom levels are all in `src/config
    - `id` must equal its position in the list (1-based).
    - `accepted` lists the variants that count as correct. Matching ignores case, punctuation, accents and a leading "the/a/an", and allows small typos (none for 4 letters or fewer, 1 up to 8 letters, 2 beyond that).
    - `credit` should name the author, licence and source. `creditUrl` is the Commons file page.
-   - `focus` (optional) is the point the zoom starts on and stays anchored to, as fractions of the image's width and height: `{ "x": 0, "y": 0 }` is the top-left corner and `{ "x": 0.5, "y": 0.5 }` (the default) is the centre. Pick a part that is hard to identify at 16x but close enough to the subject that zooming out reveals it, such as a hoof rather than the giraffe's patterned body. Check it with `npm run dev` and `?date=` for that puzzle's day.
+   - `focus` (optional) is the point the zoom starts on and stays anchored to, as fractions of the image's width and height: `{ "x": 0, "y": 0 }` is the top-left corner and `{ "x": 0.5, "y": 0.5 }` (the default) is the centre. Pick a part that is hard to identify at 16x but close enough to the subject that zooming out reveals it, such as a hoof rather than the giraffe's patterned body. Check it with `npm run dev` and `?day=<id>`.
 5. Run `npm test`. The data tests check ids, that each image exists, filename format and credits.
 
 ## Deploy to GitHub Pages (current)

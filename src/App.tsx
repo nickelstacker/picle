@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react'
 import { GAME_NAME, LAUNCH_DATE } from './config'
-import { isValidDateKey, localDateKey, msUntilLocalMidnight } from './lib/date'
+import { dateKeyForPuzzle, localDateKey, msUntilLocalMidnight } from './lib/date'
 import { selectDailyPuzzle, type Puzzle } from './lib/puzzles'
 import { Game } from './components/Game'
 import puzzles from './data/puzzles.json'
 
-// In development, ?date=YYYY-MM-DD plays a different day's puzzle.
-function devDateOverride(): string | null {
-  if (!import.meta.env.DEV) return null
-  const date = new URLSearchParams(window.location.search).get('date')
-  return date && isValidDateKey(date) ? date : null
+// For debugging, ?day=N plays puzzle #N. These games are never saved, so a reload starts fresh.
+function debugDay(): number | null {
+  const day = new URLSearchParams(window.location.search).get('day')
+  return day && /^[1-9]\d*$/.test(day) ? Number(day) : null
 }
 
 function useNow(intervalMs: number): Date {
@@ -23,7 +22,8 @@ function useNow(intervalMs: number): Date {
 
 export default function App() {
   const now = useNow(15_000)
-  const dateKey = devDateOverride() ?? localDateKey(now)
+  const day = debugDay()
+  const dateKey = day ? dateKeyForPuzzle(day, LAUNCH_DATE) : localDateKey(now)
   const daily = selectDailyPuzzle(puzzles as Puzzle[], dateKey, LAUNCH_DATE)
   const msUntilNext = msUntilLocalMidnight(now)
 
@@ -35,7 +35,14 @@ export default function App() {
 
       {daily.kind === 'puzzle' ? (
         // Keyed by date so a fresh game starts when the day rolls over at local midnight.
-        <Game key={dateKey} dateKey={dateKey} number={daily.number} puzzle={daily.puzzle} msUntilNext={msUntilNext} />
+        <Game
+          key={dateKey}
+          dateKey={dateKey}
+          number={daily.number}
+          puzzle={daily.puzzle}
+          msUntilNext={msUntilNext}
+          persist={day === null}
+        />
       ) : (
         <main className="game empty">
           <p className="empty-title">{daily.kind === 'notLaunched' ? `${GAME_NAME} is coming soon.` : 'New puzzles coming soon.'}</p>
