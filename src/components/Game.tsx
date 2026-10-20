@@ -142,7 +142,7 @@ export function Game({ dateKey, number, puzzle, msUntilNext, debug }: Props) {
         <span className="caret" aria-hidden="true" />
       </p>
 
-      <Keyboard onKey={handleKey} canSubmit={normalise(text) !== ''} />
+      <Keyboard onKey={handleKey} />
     </main>
   )
 }

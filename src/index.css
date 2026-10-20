@@ -174,8 +174,8 @@ button {
   display: flex;
 }
 
-.key-row:nth-child(2) {
-  padding: 0 5%;
+.key-spacer {
+  flex: 0.5;
 }
 
 .key {
@@ -228,43 +228,32 @@ button {
   flex: 1.5;
 }
 
-.key-space {
-  flex: 3;
-  font-size: 1rem;
-  text-transform: none;
-}
-
 .key-enter {
-  flex: 1.5;
-  font-size: 1.05rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.key-row-space {
+  justify-content: center;
+}
+
+.key-space {
+  flex: 0 0 50%;
+  height: 46px;
+  font-size: 0.95rem;
+  font-weight: 600;
   text-transform: none;
-}
-
-.key-enter .key-cap {
-  background: var(--accent);
-  color: #fff;
-}
-
-.key-enter[data-pressed] .key-cap {
-  background: var(--accent-strong);
-}
-
-.key-enter:disabled {
-  cursor: default;
-}
-
-.key-enter:disabled .key-cap {
-  background: var(--border);
-  color: var(--muted);
 }
 
 @media (max-height: 700px) {
   .key { height: 50px; }
+  .key-space { height: 40px; }
   .guess-display { min-height: 40px; }
 }
 
 @media (max-height: 580px) {
   .key { height: 44px; padding: 3px 3px; }
+  .key-space { height: 36px; }
 }
 
 /* Image */
