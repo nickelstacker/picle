@@ -154,83 +154,117 @@ button {
   50% { opacity: 0; }
 }
 
-/* On-screen keyboard */
+/* On-screen keyboard: each key's tap area runs edge to edge with its neighbours, so near-misses still type */
 
 .keyboard {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin: 0 -10px;
+  width: calc(100% + 32px);
+  max-width: 520px;
+  margin: 0 -16px;
+  align-self: center;
+  padding: 0 3px;
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: none;
 }
 
 .key-row {
   display: flex;
-  justify-content: center;
-  gap: 6px;
+}
+
+.key-row:nth-child(2) {
+  padding: 0 5%;
 }
 
 .key {
+  position: relative;
   flex: 1;
-  max-width: 44px;
-  height: 54px;
-  padding: 0;
+  min-width: 0;
+  height: 58px;
+  padding: 4px 3px;
   border: none;
-  border-radius: 8px;
-  background: #e7e5df;
+  background: none;
   color: var(--text);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
   text-transform: uppercase;
-  touch-action: manipulation;
+  touch-action: none;
 }
 
-.key:active {
-  background: #d6d3cb;
+.key-cap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: #e7e5df;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.12);
+}
+
+.key[data-pressed] .key-cap {
+  background: #d3d0c7;
+}
+
+.key-pop {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% - 6px);
+  z-index: 10;
+  translate: -50% 0;
+  min-width: 52px;
+  padding: 8px 0;
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.22);
+  font-size: 2rem;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .key-wide {
   flex: 1.5;
-  max-width: 66px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .key-space {
   flex: 3;
-  max-width: none;
   font-size: 1rem;
   text-transform: none;
 }
 
 .key-enter {
-  flex: 1.4;
-  max-width: none;
-  background: var(--accent);
-  color: #fff;
+  flex: 1.5;
   font-size: 1.05rem;
   text-transform: none;
 }
 
-.key-enter:active {
+.key-enter .key-cap {
+  background: var(--accent);
+  color: #fff;
+}
+
+.key-enter[data-pressed] .key-cap {
   background: var(--accent-strong);
 }
 
 .key-enter:disabled {
-  background: var(--border);
-  color: var(--muted);
   cursor: default;
 }
 
+.key-enter:disabled .key-cap {
+  background: var(--border);
+  color: var(--muted);
+}
+
 @media (max-height: 700px) {
-  .key { height: 46px; }
-  .keyboard { gap: 6px; }
+  .key { height: 50px; }
   .guess-display { min-height: 40px; }
 }
 
 @media (max-height: 580px) {
-  .key { height: 40px; }
+  .key { height: 44px; padding: 3px 3px; }
 }
 
 /* Image */
